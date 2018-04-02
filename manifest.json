@@ -1,0 +1,24 @@
+{
+  "manifest_version": 2,
+  "name": "tabFx",
+  "version": "0.1",
+
+  "description": "Access similar tabs in a fast way",
+  "homepage_url": "https://developer.mozilla.org",
+  "icons": {
+    "48": "icons/icon-48px.svg"
+  },
+
+  "permissions": [
+    "tabs"
+  ],
+
+  "browser_action": {
+    "default_icon": {
+      "48": "icons/icon-48px.svg"
+    },
+    "default_title": "tabFx",
+    "default_popup": "popup/main.html"
+  }
+
+}

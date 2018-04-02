@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="style.css">
+  <title>tabFx - main</title>
+</head>
+<body>
+  <div class="debug">
+
+  </div>
+  <main>
+    <form>
+      <!-- future expansion -->
+      <!-- <label for="match-preset">preset:</label>
+      <select name="match-preset" id="match-preset">
+        <option value="auto">auto</option>
+      </select> -->
+
+      <ul>
+        <li>
+          <label for="start-select">
+            <input type="checkbox" name="start-select" id="start-select">
+            start: <span></span>
+          </label>
+        </li>
+        <li>
+          <label for="end-select">
+            <input type="checkbox" name="end-select" id="end-select">
+            end: <span></span>
+          </label>
+        </li>
+      </ul>
+    </form>
+
+    <hr>
+    
+    <!-- matched tabs will be shown here -->
+    <ol id="found-tabs">
+      
+    </ol>
+    
+  </main>
+  <footer>
+    <span>tabFx</span>
+    <span>v0.1</span>
+  </footer>
+
+  <script src="match-tabs.js"></script>
+</body>
+</html>

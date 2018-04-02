@@ -1,0 +1,80 @@
+html {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 10px;
+  overflow: hidden;
+}
+body {
+  margin: 0 auto;
+  width: 400px;
+  background-color: #F9F9FA;
+  font-size: 1.6rem;
+}
+main{
+  padding: 5px 8px;
+}
+
+/* style form */
+form{
+  font-size: 1.3rem;
+}
+form label {
+  cursor: pointer;
+}
+form ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+form li {
+  margin: 0;
+  line-height: 1.5;
+}
+form label{
+  display: flex;
+  justify-content: space-between;
+}
+form input + span {
+  width: 300px;
+  margin-left: 10px;
+  padding-left: 4px;
+  background: #EEE;
+  color: #9A9A9a;
+}
+
+/* very small footer style */
+footer{
+  display: flex;
+  justify-content: space-between;
+  padding: 0 3px;
+  background-color: #888;
+  color: white;
+  font-size: 1rem;
+  font-family: monospace;
+  line-height: 1.5;
+}
+
+/* found tabs style */
+#found-tabs {
+  margin: 0;
+  padding: 0;
+  font-size: 1.3rem;
+}
+#found-tabs ol{
+  list-style-type: upper-roman;
+}
+#found-tabs li {
+  margin: 5px 0;
+  padding-left: 4px;
+  padding-right: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: pointer;
+  line-height: 1.6;
+}
+#found-tabs li.active{
+  background: rgb(162, 227, 255);
+}
+
+
+
