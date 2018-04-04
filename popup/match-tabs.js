@@ -39,7 +39,7 @@ function restorePresets() {
     }
     console.log(presets);
     savePresets();
-    updateAuto();
+    updateAutoPreset();
     fillAutoResults();
   }
 
@@ -79,9 +79,9 @@ endSelect.addEventListener('click', () => {
 
 
 /*
-  update auto preset object as well as popup elements depending on it
+  update auto preset properties using active url
 */
-async function updateAuto(){
+async function updateAutoPreset(){
   let thisTab = (await browser.tabs.query({active:true, currentWindow:true}))[0];
 
   // retrieving auto start query
@@ -105,8 +105,17 @@ async function updateAuto(){
     presets.auto.endValue = "";
   }
 
+  updatePopup();
+}
+
+/*
+  update tags and checkboxes in popup using presets
+ */
+function updatePopup() {
+  console.log("popup updated");
   //filling tags in popup
   document.querySelector('#start-select + span').textContent = presets.auto.startValue;
+  console.log(presets.auto.startValue);
   document.querySelector('#end-select + span').textContent = presets.auto.endValue;
 
   //filling checkboxes
@@ -192,7 +201,7 @@ async function fillAutoResults(){
   when popup was opened
 */
 browser.tabs.onActivated.addListener(() => {
-  updateAuto();
+  updateAutoPreset();
   fillAutoResults();
 } );
 
