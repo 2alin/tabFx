@@ -1,25 +1,85 @@
 
-// I have plans to expand the extension with presets
+
 /*
-  Setting preset constructor, instances and  presets list
+  Setting presets Default
 */
-function Preset(name){
-  this.name = name;
-  this.start = {
-    isOn: true,
-    value: ""
-  }
-  this.end = {
-    isOn: true,
-    value: ""
+
+var presetsDefault = {
+  modeActive: "auto",
+  auto: {
+    startIsOn: true,
+    startValue: "",
+    endIsOn: true,
+    endValue: ""
   }
 }
-var presets = [ new Preset("auto"), new Preset("preset1")];
+
+/*
+save and restore presets options from local storage
+*/
+var presets;
+
+function savePresets(){
+  browser.storage.local.set({
+    presetsLocal: presets
+  });
+}
+
+function restorePresets() {
+
+  function setPresets(result) {
+    if(result.hasOwnProperty("presetsLocal")){
+      // there's presets saved locally already
+      console.log("I exist already");
+      presets = result.presetsLocal;
+    } else{
+      // no presets saved yet
+      console.log("sorry I don't exist");
+      presets = presetsDefault;
+    }
+    console.log(presets);
+    savePresets();
+    updateAuto();
+    fillAutoResults();
+  }
+
+  function onError(error){
+    console.log('Error: ' + error);
+  }
+
+  var getting = browser.storage.local.get("presetsLocal");
+  getting.then(setPresets, onError);
+}
+
+document.addEventListener("DOMContentLoaded", restorePresets);
+
 
 
 
 /*
-  update presets.auto as well as popup elements depending on it
+  binding checkboxes to preset properties
+*/
+
+startSelect= document.querySelector('#start-select');
+endSelect= document.querySelector('#end-select');
+// adding event listeners and update object values
+startSelect.addEventListener('click', () => {
+  presets.auto.startIsOn = startSelect.checked;
+  fillAutoResults();
+  savePresets();
+  
+});  
+endSelect.addEventListener('click', () => {
+  presets.auto.endIsOn= endSelect.checked;
+  fillAutoResults();
+  savePresets();
+});  
+
+
+
+
+/*
+  update auto preset object as well as popup elements depending on it
 */
 async function updateAuto(){
   let thisTab = (await browser.tabs.query({active:true, currentWindow:true}))[0];
@@ -28,49 +88,59 @@ async function updateAuto(){
   if (thisTab.url.startsWith('http')) {
     // catching http and https urls
     let re = new RegExp('https*://([^/])+/', 'i');
-    presets[0].start.value = re.exec(thisTab.url)[0];
+    presets.auto.startValue = re.exec(thisTab.url)[0];
   } else {
-    // catching about, file, etc urls
+    // catching 'about:', 'file:', etc urls
     let re = new RegExp('^([a-z]+:)', 'i');
-    presets[0].start.value = re.exec(thisTab.url)[0];
+    presets.auto.startValue = re.exec(thisTab.url)[0];
   }
   
   // retrieving auto end query
   // breakpoints chars are: '/' and '$'
   let re = new RegExp('([.$][a-z]+)$' , 'i');
   if (re.test(thisTab.url)){
-    presets[0].end.value = re.exec(thisTab.url)[0];
+    presets.auto.endValue = re.exec(thisTab.url)[0];
+  } else {
+    //it has no end-breakpoints
+    presets.auto.endValue = "";
   }
 
-  document.querySelector('#start-select + span').textContent = presets[0].start.value;
-  document.querySelector('#end-select + span').textContent = presets[0].end.value;
+  //filling tags in popup
+  document.querySelector('#start-select + span').textContent = presets.auto.startValue;
+  document.querySelector('#end-select + span').textContent = presets.auto.endValue;
+
+  //filling checkboxes
+  startSelect.checked = presets.auto.startIsOn;
+  endSelect.checked = presets.auto.endIsOn;
 }
 
 
 
 /*
-  fill 'matching tabs' list
+  fill 'matching tabs' result list
 */
 async function fillAutoResults(){
   let tabs = await browser.tabs.query({});
 
   // creating a list of tabs that matches the auto queries
   let foundTabs = [];
-  let start = presets[0].start;
-  let end = presets[0].end;
+  let startIsOn = presets.auto.startIsOn;
+  let startValue = presets.auto.startValue;
+  let endIsOn = presets.auto.endIsOn;
+  let endValue = presets.auto.endValue;
   
   for (let tab of tabs){
     //considering all 4 states of auto checkboxes
-    if (start.isOn && end.isOn){
-      if (tab.url.startsWith(start.value) && tab.url.endsWith(end.value)){
+    if (startIsOn && endIsOn){
+      if (tab.url.startsWith(startValue) && tab.url.endsWith(endValue)){
         foundTabs.push(tab);
       }
-    } else if (start.isOn && !end.isOn){
-      if (tab.url.startsWith(start.value)){
+    } else if (startIsOn && !endIsOn){
+      if (tab.url.startsWith(startValue)){
         foundTabs.push(tab);
       }
-    } else if (!start.isOn && end.isOn){
-      if (tab.url.endsWith(end.value)){
+    } else if (!startIsOn && endIsOn){
+      if (tab.url.endsWith(endValue)){
         foundTabs.push(tab);
       }
     } else {
@@ -127,24 +197,4 @@ browser.tabs.onActivated.addListener(() => {
 } );
 
 
-/*
-  handle form values
-*/
-startSelect= document.querySelector('#start-select');
-endSelect= document.querySelector('#end-select');
-// loading checked values from preset object
-startSelect.checked = presets[0].start.isOn;
-endSelect.checked = presets[0].end.isOn;
-// adding event listeners and update object values
-startSelect.addEventListener('click', () => {
-  presets[0].start.isOn = startSelect.checked;
-  fillAutoResults();
-  
-});  
-endSelect.addEventListener('click', () => {
-  presets[0].end.isOn = endSelect.checked;
-  fillAutoResults();
-});  
 
-updateAuto();
-fillAutoResults();
