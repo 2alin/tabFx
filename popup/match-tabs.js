@@ -166,14 +166,17 @@ async function fillAutoResults(){
   // I'm using 'k' as a counter
   let resultsBox = document.querySelector("#found-tabs");
   resultsBox.innerHTML = "";
+  let resultsList = document.createElement("ol");
+
   let thisTab = (await browser.tabs.query({active:true, currentWindow:true}))[0];
   let k = 0; // counter for list item
+
   for (let tab of foundTabs){
     let tabItem = document.createElement('li');
     
     k++; // counter for list item
     tabItem.textContent = k +'. '+ tab.title; // list item with counter
-    resultsBox.appendChild(tabItem);
+    resultsList.appendChild(tabItem);
 
     // assign tab id and window ID as id and class of tabItem
     // in order to inherit such values
@@ -193,6 +196,9 @@ async function fillAutoResults(){
       window.close();
     });
   }
+
+  resultsBox.appendChild(resultsList);
+
 }
 
 
