@@ -13,26 +13,31 @@
   </div>
   <main>
     <form>
-      <!-- future expansion -->
-      <!-- <label for="match-preset">preset:</label>
-      <select name="match-preset" id="match-preset">
-        <option value="auto">auto</option>
-      </select> -->
 
-      <ul>
-        <li>
-          <label for="start-select">
-            <input type="checkbox" name="start-select" id="start-select">
-            start: <span></span>
-          </label>
-        </li>
-        <li>
-          <label for="end-select">
-            <input type="checkbox" name="end-select" id="end-select">
-            end: <span></span>
-          </label>
-        </li>
-      </ul>
+      <div>
+        <label for="start-select">
+        <input type="checkbox" name="start-select" id="start-select"> start: 
+        </label>
+        <p id = "start" class="queries"></p>
+      </div>
+
+      <div>
+        <label for="end-select">
+        <input type="checkbox" name="end-select" id="end-select"> end: 
+        </label>
+        <div class="wrapper">
+          <p>includes</p>
+          <p id="include" class="queries"></p>
+        </div>
+      </div>
+      
+      <div>
+        <p id= "settings"> </p>
+        <div class="wrapper">
+          <p>ignores</p>
+          <p id="ignore" class="queries"></p>
+        </div>
+      </div>
     </form>
 
     <hr>
@@ -45,8 +50,49 @@
   </main>
   <footer>
     <span>tabFx</span>
-    <span>v0.1</span>
+    <span>v0.2</span>
   </footer>
+
+  <!-- settings popup -->
+
+  <div id="settings-popup">
+    <form id="settings-form"> 
+      <p>Select what you want to include in the filter.</p>
+      <div class="separators">
+        <span>separators: </span>
+        <label for="dollar">
+          <input type="checkbox" name="dollar" id="dollar">
+          <span>$</span>
+        </label>
+        <label for="dot">
+          <input type="checkbox" name="dot" id="dot">
+          <span>.</span>
+        </label>
+        <label for="sharp">
+          <input type="checkbox" name="sharp" id="sharp">
+          <span>#</span>
+        </label>
+        <label for="question">
+          <input type="checkbox" name="?" id="question">
+          <span>?</span>
+        </label>
+      </div>
+
+      <div class="keyword">
+        <label for="keyword-check">
+          <span>keyword: </span> 
+          <input type="checkbox" name="keyword-check" id="keyword-check">
+        </label>
+        <input type="text" name="keyword-text" id="keyword-text">
+      </div>
+      
+      <div class="buttons">
+        <button type="submit" id="save-btn">save</button>
+        <button type="reset" id="reset-btn">reset</button>
+      </div>
+
+    </form>
+  </div>
 
   <script src="match-tabs.js"></script>
 </body>

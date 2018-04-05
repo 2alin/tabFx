@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "tabFx",
-  "version": "0.1",
+  "version": "0.2",
 
   "description": "Access similar tabs in a fast way",
   "homepage_url": "https://developer.mozilla.org",
@@ -10,7 +10,8 @@
   },
 
   "permissions": [
-    "tabs"
+    "tabs",
+    "storage"
   ],
 
   "browser_action": {
