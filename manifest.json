@@ -1,10 +1,10 @@
 {
   "manifest_version": 2,
   "name": "tabFx",
-  "version": "0.2",
+  "version": "1.0",
 
   "description": "Access similar tabs in a fast way",
-  "homepage_url": "https://developer.mozilla.org",
+  "homepage_url": "https://github.com/2alin/tabFx",
   "icons": {
     "48": "icons/icon-48px.svg"
   },

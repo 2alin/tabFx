@@ -6,6 +6,7 @@ html {
 body {
   margin: 0 auto;
   width: 400px;
+  height: 420px;
   background-color: #F9F9FA;
   font-size: 1.6rem;
 }
@@ -102,10 +103,16 @@ hr {
 
 /* very small footer style */
 footer{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #888;
+}
+footer  div.flex-container{
   display: flex;
   justify-content: space-between;
-  padding: 0 3px;
-  background-color: #888;
+  padding: 0 4px;
   color: white;
   font-size: 1rem;
   font-family: monospace;
