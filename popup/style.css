@@ -91,7 +91,7 @@ form.auto div.flex-container label{
 }
 form.auto div.flex-container label span{
   display: inline-block;
-  width: 3.4em;
+  width: 3.2em;
   margin-left: 4px;
 }
 form.auto div.flex-container > :nth-child(3){
@@ -264,7 +264,7 @@ div.keyword span:nth-child(1){
   display: inline-block;
   width: 100px;
   text-align: right;
-  margin-right: 10px;
+  margin-right: 6px;
 }
 
 div.keyword label{
