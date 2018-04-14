@@ -265,14 +265,34 @@ async function fillAutoResults(){
   let resultsList = document.createElement("ol");
 
   let thisTab = (await browser.tabs.query({active:true, currentWindow:true}))[0];
+  console.log(thisTab);
   let k = 0; // counter for list item
 
   for (let tab of foundTabs){
     let tabItem = document.createElement('li');
+    let itemCounter = document.createElement('span');
+    let favIcon = document.createElement('span');
+    let titleTab = document.createElement('span');
     
     k++; // counter for list item
-    tabItem.textContent = k +'. '+ tab.title; // list item with counter
-    resultsList.appendChild(tabItem);
+    itemCounter.textContent = k + '.'; // fill itemCounter
+
+    // fill favicon
+    if(tab.favIconUrl){
+      if(tab.favIconUrl.startsWith("http")){
+        favIcon.style.backgroundImage = 'url(' + tab.favIconUrl +')';
+      }
+    }
+
+    titleTab.textContent = tab.title// fill tab title
+    
+    // form list item
+    tabItem.appendChild(itemCounter); 
+    tabItem.appendChild(favIcon);
+    tabItem.appendChild(titleTab);
+
+
+    resultsList.appendChild(tabItem); //append to the list
 
     // assign tab id and window ID as id and class of tabItem
     // in order to inherit such values
@@ -285,8 +305,15 @@ async function fillAutoResults(){
     }
 
     tabItem.addEventListener('click', (e) => {
-      let id = Number(e.target.id);
-      let windowId = Number(e.target.className);
+      let id;
+      let windowId;
+      if (e.target.nodeName.toLowerCase() === "li"){
+        id = Number(e.target.id);
+        windowId = Number(e.target.className);
+      } else {
+        windowId = Number(e.target.parentNode.className);
+        id = Number(e.target.parentNode.id);
+      }
       browser.windows.update(windowId, {focused: true});
       browser.tabs.update(id, {active: true});
       window.close();
@@ -294,6 +321,18 @@ async function fillAutoResults(){
   }
 
   resultsBox.appendChild(resultsList);
+  
+  // Dynamic list counter width
+  resultsBox.className = "";
+  if (k === 0){
+    resultsBox.className = "empty";
+  } else if (k < 10){
+    resultsBox.className = "one-digit";
+  } else if(k < 100){
+    resultsBox.className = "two-digits";
+  } else {
+    resultsBox.className = "three-digits";
+  }
 
 }
 

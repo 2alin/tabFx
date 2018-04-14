@@ -175,6 +175,32 @@ found tabs style
   background: var(--main-hl-color);
   color: white;
 }
+/* list counters */
+#found-tabs li span:nth-child(1){
+  display: inline-block;
+  width: 1.65em;
+  text-align: right;
+}
+#found-tabs.one-digit li span:nth-child(1){
+  width: 0.85em;
+}
+#found-tabs.two-digits li span:nth-child(1){
+  width: 1.65em;
+}
+#found-tabs.three-digits li span:nth-child(1){
+  width: 2.45em;
+}
+/*favIcons*/
+#found-tabs li span:nth-child(2){
+  display: inline-block;
+  vertical-align: bottom;
+  height: 2em;
+  width: 2em;
+  background-image:url("assets/tab-dark-24px.svg");
+  background-size: 16px 16px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
 
 
 /* 
