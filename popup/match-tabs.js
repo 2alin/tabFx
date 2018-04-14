@@ -165,7 +165,7 @@ async function updateAutoPreset(){
     }
   }
 
-  // conside keyword and its status
+  // classify keyword 
   let keyWordValue = presets.auto.keyWord.value;
   if(presets.auto.keyWord.isOn){
     if ( keyWordValue != ""){
@@ -348,7 +348,7 @@ browser.tabs.onActivated.addListener(() => {
 
 
 /*
-  ending ettings popup window
+  ending settings popup window
 */
 
 // open settings popup when clicking settings button
@@ -391,7 +391,7 @@ function updateSettingsPreset(){
   presets.auto.splitChars['.'] = settingsForm.elements['dot'].checked;
   presets.auto.splitChars['#'] = settingsForm.elements['sharp'].checked;
   presets.auto.splitChars['?'] = settingsForm.elements['question'].checked;
-  presets.auto.keyWord.value = settingsForm.elements['keyword-text'].value;
+  presets.auto.keyWord.value = settingsForm.elements['keyword-text'].value.trim();
   presets.auto.keyWord.isOn = settingsForm.elements['keyword-check'].checked;
 }
 
