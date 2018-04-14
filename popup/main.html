@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
   <link rel="stylesheet" href="style.css">
   <title>tabFx - main</title>
 </head>
+
 <body>
   <div class="debug">
 
@@ -18,23 +20,23 @@
 
       <div>
         <label for="start-select">
-        <input type="checkbox" name="start-select" id="start-select"> start: 
+          <input type="checkbox" name="start-select" id="start-select"> start:
         </label>
-        <p id = "start" class="queries"></p>
+        <p id="start" class="queries"></p>
       </div>
 
       <div>
         <label for="end-select">
-        <input type="checkbox" name="end-select" id="end-select"> end: 
+          <input type="checkbox" name="end-select" id="end-select"> end:
         </label>
         <div class="wrapper">
           <p>includes</p>
           <p id="include" class="queries"></p>
         </div>
       </div>
-      
+
       <div>
-        <p id= "settings"> </p>
+        <p id="ending-gear"> </p>
         <div class="wrapper">
           <p>ignores</p>
           <p id="ignore" class="queries"></p>
@@ -42,13 +44,16 @@
       </div>
     </form>
 
-    <hr>
-    
-    <!-- matched tabs will be shown here -->
-    <div id="found-tabs">
-      
+    <div>
+      <!-- give hr it's own flex space -->
+      <hr>
     </div>
-    
+
+    <!-- filtered list will be shown here -->
+    <div id="found-tabs">
+
+    </div>
+
   </main>
 
   <!-- Small Footer -->
@@ -62,8 +67,10 @@
   <!-- ending settings -->
 
   <div id="settings-popup">
-    <form id="settings-form"> 
+    <form id="settings-form">
+
       <p>Select what you want to include in the filter.</p>
+      
       <div class="separators">
         <span>separators: </span>
         <label for="dollar">
@@ -86,12 +93,12 @@
 
       <div class="keyword">
         <label for="keyword-check">
-          <span>keyword: </span> 
+          <span>keyword: </span>
           <input type="checkbox" name="keyword-check" id="keyword-check">
         </label>
         <input type="text" name="keyword-text" id="keyword-text">
       </div>
-      
+
       <div class="buttons">
         <button type="submit" id="save-btn">save</button>
         <button type="reset" id="reset-btn">reset</button>
@@ -102,4 +109,5 @@
 
   <script src="match-tabs.js"></script>
 </body>
+
 </html>

@@ -309,11 +309,11 @@ browser.tabs.onActivated.addListener(() => {
 
 
 /*
-  Settings popup window
+  ending ettings popup window
 */
 
 // open settings popup when clicking settings button
-var settingsBtn = document.querySelector('#settings');
+var settingsBtn = document.querySelector('#ending-gear');
 var settingsPopup = document.querySelector('#settings-popup');
 settingsBtn.addEventListener('click',() => {
   updateSettingsForm();

@@ -1,43 +1,61 @@
+/*
+color variables
+*/
+:root{
+  --main-text-color: #0c0c0d;
+  --sec-text-color:#737373;
+  --main-bg-color: #ffffff;
+  --grey-bg-color: #ededf0;
+  --main-hl-color: #45a1ff;
+  --sec-hl-color: #00c8d7;
+}
+
+
+/*
+general style
+*/
 html {
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-family: sans-serif;
   font-size: 10px;
   overflow: hidden;
 }
 body {
-  margin: 0 auto;
   width: 400px;
   height: 420px;
-  background-color: #F9F9FA;
+  margin: 0 auto;
+  background-color: var(--main-bg-color);
+  color: var(--main-text-color);
   font-size: 1.6rem;
 }
 main{
   padding: 4px 4px;
+  /* 420 - 15(footer height) - 2*4 (top&bottom padding) */
+  height: calc(405px - 8px);
+  display: flex;
+  flex-direction: column;
 }
 
-/* style form */
+
+/* auto form style*/
 
 form{
   font-size: 1.3rem;
 
 }
-
 form > div {
   display: flex;
   
   /* background: lightblue; */
   
 }
-
 form > div:nth-child(2){
   margin-top: 4px;
 }
-
 form div.wrapper{
   display: flex;
   width: 100%;  
   margin-left: 8px;
 }
-
 form label {
   /* background: lightsalmon; */
   cursor: pointer;
@@ -48,16 +66,14 @@ form p{
   margin: 0;
   line-height: 1.5;
 }
-
 #start{
   /* width: 100%; */
   flex:1;
   margin-left: 8px;
   padding-left: 4px;
-  background: #EEE;
-  color: #9A9A9A;
+  background: var(--grey-bg-color);
+  color: var(--sec-text-color);
 }
-
 .wrapper > p:nth-child(1){
   width: 100px; 
   flex: 1;
@@ -65,21 +81,21 @@ form p{
   margin-right: 4px;
 }
 #include {
-  flex: 5;
+  flex: 5;  
   padding-left: 2px;
-  background-color: #EEE;
-  color: #9A9A9A;
+  background-color: var(--grey-bg-color);
+  color: var(--sec-text-color);
   /* background: pink; */
 }
 #ignore {
   flex:5;
   padding-left: 2px;
-  background-color: #EEE;
-  color: #9A9A9A;
+  background-color: var(--grey-bg-color);
+  color: var(--sec-text-color);
   /* background: purple; */
 }
 
-#settings {
+#ending-gear {
   /* background-color: khaki; */
   background-image:  url("./assets/settings-36px.svg");
   background-size: contain;
@@ -101,32 +117,42 @@ hr {
   margin-top: 4px;
 }
 
-/* very small footer style */
+
+/* 
+very small footer style 
+*/
+
 footer{
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
-  background-color: #888;
+  background-color: var(--sec-text-color);
 }
 footer  div.flex-container{
   display: flex;
   justify-content: space-between;
   padding: 0 4px;
-  color: white;
+  color: #F9F9FA;
   font-size: 1rem;
   font-family: monospace;
   line-height: 1.5;
 }
 
-/* found tabs style */
+
+/* 
+found tabs style 
+*/
+
 #found-tabs {
   margin: 0;
   padding: 0;
+  overflow: auto;
 }
 #found-tabs ol{
   margin: 0;
   padding: 0;
+  overflow: visible;
   font-size: 1.3rem;
 }
 #found-tabs li {
@@ -144,7 +170,10 @@ footer  div.flex-container{
 }
 
 
-/* Settings popup style */
+/* 
+ending settings popup style 
+*/
+
 #settings-popup.visible{
   display:flex;
 }
@@ -164,62 +193,75 @@ footer  div.flex-container{
 #settings-form{
   z-index: 1500;
   width: 80%; 
-  background-color: #F9F9FA;
-  padding: 10px;
+  background-color: var(--main-bg-color);
+  padding: 8px;
 }
 
 #settings-form{
   font-size: 1.3rem;
 }
-
-
-div.separators span:nth-child(1){
-  margin: 2px 10px 0 0;
+#settings-form > *{
+  margin-bottom: 4px;
+  line-height: 1.5;
 }
+div.separators{
+  display: flex;
+  justify-content: left;
+  align-items: left
 
-#settings-form label{
-  display: inline-block;
+}
+div.separators span:nth-child(1){
+  width: 100px;
+  text-align: right;
   margin-right: 10px;
 }
-#settings-form label input {
+div.separators label{
+  margin-right: 10px;
+}
+div.separators label input {
   margin: 0;
   vertical-align:text-bottom
-  
 }
-#settings-form label span {
+div.separators label span {
   font-size: 1.4rem;
 }
 
 
-div.keyword{
-  /* display: flex; */
-  margin: 4px 12px;
-}
 div.keyword span:nth-child(1){
-  margin-right:5px;
+  display: inline-block;
+  width: 100px;
+  text-align: right;
+  margin-right: 10px;
 }
 
-#settings-form div.keyword label{
-  margin:0;
-  margin-right: 8px;
+div.keyword label{
+  margin-right: 10px;
+}
+div.keyword label input {
+  margin: 0;
+  vertical-align:text-bottom
 }
 
 div.keyword #keyword-text{
   width: 120px;
   background:white;
-  border: thin solid black;
+  border: thin solid #0c0c0d;
   border-radius: 5%;
-  color: black;
+  color: var(--main-text-color);
 }
 
 div.buttons {
-  margin-left: 80px;
+  display: flex;
+  justify-content: center;
+  margin-top: 8px;
 }
 div.buttons button{
-  background: #F9F9FA;
+  background: var(--main-hl-color);
   cursor: pointer;
-  color: black;
+  color: #ffffff;
+  line-height: 2.5rem;
+  border: none;
   border-radius: 10%;
-  padding: 2px 10px;
-  margin: 4px 20px 0 0;
+  padding: 0 10px;
+  margin: 0 20px;
 }
