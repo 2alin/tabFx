@@ -7,7 +7,9 @@ color variables
   --main-bg-color: #ffffff;
   --grey-bg-color: #ededf0;
   --main-hl-color: #45a1ff;
-  --sec-hl-color: #00c8d7;
+  --sec-hl-color: #deeeff;
+  /* --sec-hl-color: #0a84ff; */
+  /* --sec-hl-color:  rgb(162, 227, 255); */
 }
 
 
@@ -156,17 +158,22 @@ found tabs style
   font-size: 1.3rem;
 }
 #found-tabs li {
-  margin: 5px 0; 
+  margin: 0; 
   padding-left: 4px;
   padding-right: 4px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   cursor: pointer;
-  line-height: 1.6;
+  line-height: 2;
 }
 #found-tabs li.active{
-  background: rgb(162, 227, 255);
+  background: var(--sec-hl-color);
+  /* color:white; */
+}
+#found-tabs li:hover {
+  background: var(--main-hl-color);
+  color: white;
 }
 
 
