@@ -10,14 +10,18 @@
 </head>
 
 <body>
-  <div class="debug">
-
-  </div>
+  <!-- nav bar for modes -->
+  <header>
+    <nav>
+      <span id="auto-btn" class="active">Auto</span>
+      <span id="search-btn">Search</span>
+    </nav>
+  </header>
 
   <!-- auto - search forms & filtered list -->
   <main>
-    <form>
-
+    <!-- auto mode form -->
+    <form class="auto"> 
       <div class="flex-container">
         <span></span>
         <label for="start-select">
@@ -25,7 +29,6 @@
         </label>
         <span id="start" class="queries"></span>
       </div>
-
       <div class="flex-container">
         <span id="ending-gear"> </span>
         <label for="end-select">
@@ -33,18 +36,10 @@
         </label>
         <span id="include" class="queries"></span>
       </div>
-
-      <!-- <div>
-        <p id="ending-gear"> </p>
-          <div class="wrapper">
-          <p>ignores</p>
-          <p id="ignore" class="queries"></p>
-        </div>
-      </div> -->
     </form>
 
+    <!-- give hr it's own vertical flex space -->
     <div>
-      <!-- give hr it's own flex space -->
       <hr>
     </div>
 

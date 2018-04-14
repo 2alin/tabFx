@@ -7,6 +7,7 @@ color variables
   --main-bg-color: #ffffff;
   --grey-bg-color: #ededf0;
   --main-hl-color: #45a1ff;
+  --shadow-hl-color: #cde6ff;
   --sec-hl-color: #deeeff;
   /* --sec-hl-color: #0a84ff; */
   /* --sec-hl-color:  rgb(162, 227, 255); */
@@ -27,7 +28,7 @@ body {
   margin: 0 auto;
   background-color: var(--main-bg-color);
   color: var(--main-text-color);
-  font-size: 1.6rem;
+  font-size: 1.3rem;
 }
 main{
   padding: 4px 4px;
@@ -38,32 +39,62 @@ main{
 }
 
 
+/*
+nav bar style
+*/
+
+header{
+  padding: 4px;
+}
+nav {
+  display: flex;
+  justify-content: center;
+  margin: 0 8px;
+  /* background: lightcyan; */
+}
+
+nav span{
+  display: inline;
+  margin: 0 24px;
+  padding: 0 8px;
+  line-height: 1.5;
+  color: var(--sec-text-color);
+  font-weight: bold;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  /* background: pink; */
+}
+nav span:hover{
+  border-bottom: 2px solid #cde6ff;
+}
+nav span.active{
+  color: var(--main-text-color);
+  border-bottom: 2px solid #45a1ff;
+}
+
 
 /* 
 auto form style
 */
 
-form{
-  font-size: 1.3rem;
-}
-form div.flex-container {
+form.auto div.flex-container {
   display: flex;
   line-height: 1.5;
   margin-bottom: 4px;
 }
-form div.flex-container span{
+form.auto div.flex-container span{
   display: inline-block;
   width: 22px;
 }
-form div.flex-container label{
+form.auto div.flex-container label{
   display: flex;
 }
-form div.flex-container label span{
+form.auto div.flex-container label span{
   display: inline-block;
   width: 3.4em;
   margin-left: 4px;
 }
-form div.flex-container > :nth-child(3){
+form.auto div.flex-container > :nth-child(3){
   flex: 1;
   white-space: nowrap;
   overflow: hidden;
@@ -73,7 +104,7 @@ form div.flex-container > :nth-child(3){
   color: var(--sec-text-color);
 }
 
-form div.flex-container span#ending-gear {
+form.auto div.flex-container span#ending-gear {
   background-image:  url("./assets/settings-36px.svg");
   background-size: 20px 20px;
   background-repeat: no-repeat;

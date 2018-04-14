@@ -32,9 +32,12 @@ function validate(presetsTest){
   return true
 }
 
+
+
 /*
 save and restore presets options from local storage
 */
+
 var presets;
 
 function savePresets(){
@@ -68,17 +71,33 @@ function restorePresets() {
   getting.then(setPresets, onError);
 }
 
+// restore presets when document loads
 document.addEventListener("DOMContentLoaded", restorePresets);
 
 
+
+/*
+  Nav Bar actions
+*/
+var autoBtn = document.querySelector('#auto-btn');
+var searchBtn = document.querySelector('#search-btn');
+
+autoBtn.addEventListener("click", () => {
+  autoBtn.className = "active";
+  searchBtn.className = "";
+});
+searchBtn.addEventListener("click", () => {
+  searchBtn.className = "active";
+  autoBtn.className = "";
+});
 
 
 /*
   binding checkboxes to preset properties
 */
 
-startSelect= document.querySelector('#start-select');
-endSelect= document.querySelector('#end-select');
+var startSelect= document.querySelector('#start-select');
+var endSelect= document.querySelector('#end-select');
 // adding event listeners and update object values
 startSelect.addEventListener('click', () => {
   presets.auto.startIsOn = startSelect.checked;
@@ -92,9 +111,12 @@ endSelect.addEventListener('click', () => {
   savePresets();
 });  
 
+
+
 /*
 retrieving trailing part of an url
 */
+
 function endingURL(url){
   let ending = ""
   let re = new RegExp('(/[^/]*)$', 'i');
@@ -184,6 +206,7 @@ async function updateAutoPreset(){
 /*
   update text fields and checkboxes in popup using presets
  */
+
 function updatePopup() {
   //filling tags in popup
   document.querySelector('#start').textContent = presets.auto.startValue;
