@@ -6,6 +6,7 @@
 
 var presetsDefault = {
   modeActive: "auto",
+  version: "1.0",
   auto: {
     startIsOn: true,
     startValue: "",
@@ -21,7 +22,15 @@ var presetsDefault = {
 }
 
 function validate(presetsTest){
-  //verify existence of auto preset
+  //verify existence of version property
+  if (!presetsTest.hasOwnProperty("version")){
+    return false;
+  } else if(presetsTest.version != presetsDefault.version){
+    return false;
+  }
+  return true;
+  //next code deprecated because of version property
+  /* //verify existence of auto preset
   if (!presetsTest.hasOwnProperty("auto")){
     return false;
   }
@@ -29,7 +38,7 @@ function validate(presetsTest){
   if (Object.keys(presetsTest.auto).length != Object.keys(presetsDefault.auto).length){
     return false;
   }
-  return true
+  return true */
 }
 
 
@@ -51,11 +60,11 @@ function restorePresets() {
   function setPresets(result) {
     if(result.hasOwnProperty("presetsLocal") && validate(result.presetsLocal)){
       // there's presets saved locally already
-      
+      console.log("presets were restored successfully");
       presets = result.presetsLocal;
     } else{
-      // no presets saved yet
-      
+      // no presets saved yet or failed validity
+      console.log("presets failed to restore, reset them");
       presets = presetsDefault;
     }
     savePresets();
