@@ -18,30 +18,29 @@
   <main>
     <form>
 
-      <div>
+      <div class="flex-container">
+        <span></span>
         <label for="start-select">
-          <input type="checkbox" name="start-select" id="start-select"> start:
+          <input type="checkbox" name="start-select" id="start-select"> <span>start:</span>
         </label>
-        <p id="start" class="queries"></p>
+        <span id="start" class="queries"></span>
       </div>
 
-      <div>
+      <div class="flex-container">
+        <span id="ending-gear"> </span>
         <label for="end-select">
-          <input type="checkbox" name="end-select" id="end-select"> end:
+          <input type="checkbox" name="end-select" id="end-select"> <span>end:</span>
         </label>
-        <div class="wrapper">
-          <p>includes</p>
-          <p id="include" class="queries"></p>
-        </div>
+        <span id="include" class="queries"></span>
       </div>
 
-      <div>
+      <!-- <div>
         <p id="ending-gear"> </p>
-        <div class="wrapper">
+          <div class="wrapper">
           <p>ignores</p>
           <p id="ignore" class="queries"></p>
         </div>
-      </div>
+      </div> -->
     </form>
 
     <div>
@@ -70,7 +69,7 @@
     <form id="settings-form">
 
       <p>Select what you want to include in the filter.</p>
-      
+
       <div class="separators">
         <span>separators: </span>
         <label for="dollar">

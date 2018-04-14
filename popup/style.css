@@ -38,78 +38,46 @@ main{
 }
 
 
-/* auto form style*/
+
+/* 
+auto form style
+*/
 
 form{
   font-size: 1.3rem;
-
 }
-form > div {
+form div.flex-container {
   display: flex;
-  
-  /* background: lightblue; */
-  
-}
-form > div:nth-child(2){
-  margin-top: 4px;
-}
-form div.wrapper{
-  display: flex;
-  width: 100%;  
-  margin-left: 8px;
-}
-form label {
-  /* background: lightsalmon; */
-  cursor: pointer;
   line-height: 1.5;
+  margin-bottom: 4px;
+}
+form div.flex-container span{
+  display: inline-block;
+  width: 22px;
+}
+form div.flex-container label{
   display: flex;
 }
-form p{
-  margin: 0;
-  line-height: 1.5;
+form div.flex-container label span{
+  display: inline-block;
+  width: 3.4em;
+  margin-left: 4px;
 }
-#start{
-  /* width: 100%; */
-  flex:1;
-  margin-left: 8px;
-  padding-left: 4px;
+form div.flex-container > :nth-child(3){
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 0 8px;
   background: var(--grey-bg-color);
   color: var(--sec-text-color);
 }
-.wrapper > p:nth-child(1){
-  width: 100px; 
-  flex: 1;
-  text-align: right;
-  margin-right: 4px;
-}
-#include {
-  flex: 5;  
-  padding-left: 2px;
-  background-color: var(--grey-bg-color);
-  color: var(--sec-text-color);
-  /* background: pink; */
-}
-#ignore {
-  flex:5;
-  padding-left: 2px;
-  background-color: var(--grey-bg-color);
-  color: var(--sec-text-color);
-  /* background: purple; */
-}
 
-#ending-gear {
-  /* background-color: khaki; */
+form div.flex-container span#ending-gear {
   background-image:  url("./assets/settings-36px.svg");
-  background-size: contain;
+  background-size: 20px 20px;
   background-repeat: no-repeat;
   background-position: center;
-  width: 18px;
-  height: 18px;
-  margin: 2px;
-  margin-left: 18px;
-  margin-right: 12px;
-  padding-left: 4px;
-  padding-right: 4px;
   cursor: pointer;
 }
 

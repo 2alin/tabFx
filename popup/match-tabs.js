@@ -182,7 +182,7 @@ async function updateAutoPreset(){
 
 
 /*
-  update tags and checkboxes in popup using presets
+  update text fields and checkboxes in popup using presets
  */
 function updatePopup() {
   //filling tags in popup
@@ -208,7 +208,8 @@ function updatePopup() {
     excludeText += finalWord + ' '; 
   }
 
-  document.querySelector('#ignore').textContent = excludeText;
+  // exclude field auxiliary text was deprecated since v1.0
+  // document.querySelector('#ignore').textContent = excludeText;
 
   //filling checkboxes
   startSelect.checked = presets.auto.startIsOn;
@@ -265,7 +266,7 @@ async function fillAutoResults(){
   let resultsList = document.createElement("ol");
 
   let thisTab = (await browser.tabs.query({active:true, currentWindow:true}))[0];
-  console.log(thisTab);
+  
   let k = 0; // counter for list item
 
   for (let tab of foundTabs){
