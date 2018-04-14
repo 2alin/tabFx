@@ -23,7 +23,7 @@ html {
   overflow: hidden;
 }
 body {
-  width: 400px;
+  width: 390px;
   height: 420px;
   margin: 0 auto;
   background-color: var(--main-bg-color);
@@ -32,8 +32,8 @@ body {
 }
 main{
   padding: 4px 4px;
-  /* 420 - 15(footer height) - 2*4 (top&bottom padding) */
-  height: calc(405px - 8px);
+  /* 420 - 15(footer height) - 26(21.5+4 header) - 2*4 (top&bottom padding) */
+  height: calc(405px - 26px - 8px);
   display: flex;
   flex-direction: column;
 }
@@ -147,6 +147,7 @@ found tabs style
 
 #found-tabs {
   margin: 0;
+  margin-bottom: 4px;
   padding: 0;
   overflow: auto;
 }
