@@ -8,6 +8,6 @@ See it on action, here: https://youtu.be/o0TLDZKxJIU
 
 Or check the next articles to find out more about the extension:
 
-[tabFx Guide](https://github.com/spyder-ide/spyder/wiki)
+[tabFx Guide](https://github.com/2alin/tabFx/wiki/Guide)
 
 [tabFx Changelog](https://github.com/2alin/tabFx/wiki/Changelog)
