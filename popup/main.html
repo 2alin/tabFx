@@ -13,7 +13,7 @@
   <!-- nav bar for modes -->
   <header>
     <nav>
-      <span id="auto-btn" class="active">Auto</span>
+      <span id="auto-btn">Auto</span>
       <span id="search-btn">Search</span>
     </nav>
   </header>
@@ -38,14 +38,42 @@
       </div>
     </form>
 
+    <!-- search mode form -->
+    <form class="search">
+      <div class="wrapper">
+        <span id="search-logo"></span>
+        <input type="text" name="search-query" id="search-query" autocomplete="off">
+        <span id="backspace"></span>
+      </div>
+    </form>
+
     <!-- give hr it's own vertical flex space -->
     <div>
       <hr>
     </div>
 
-    <!-- filtered list will be shown here -->
-    <div id="found-tabs">
+    <!-- auto similar list will be shown here -->
+    <div id="found-tabs" class="list-tabs">
 
+    </div>
+    <!-- helper window for  auto list-->
+    <div class="helper auto">
+      <span></span>
+      <p>No similar tabs found. <br><br> Try switching off <mark>end</mark> or <mark>start</mark>, or select different separators —to filter the ending— in the gear settings button. </p>
+    </div>
+
+    <!-- search list will be shown here -->
+    <div id ="search-tabs" class="list-tabs">
+
+    </div>
+    <!-- helper window for  search list-->
+    <div class="helper search">
+      <span></span>
+      <p>No tabs found. <br><br> Try using different word(s). You can also use commas and spaces as logical operators: <br> <br> 
+      <mark>cats dogs</mark> will show tabs that contain <em>cats</em> <strong>and</strong> <em>dogs</em> in their titles or urls.<br> 
+      <mark>cats, dogs</mark> will show tabs that contain <em>cats</em> <strong>or</strong> <em>dogs</em> in their titles or urls. <br> <br>
+      Mix them and have fun creating your long search queries.
+      </p>
     </div>
 
   </main>

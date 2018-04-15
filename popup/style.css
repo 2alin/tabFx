@@ -72,6 +72,16 @@ nav span.active{
   border-bottom: 2px solid #45a1ff;
 }
 
+/*
+main forms
+*/
+main > form {
+  display: none;
+}
+main > form.active{
+  display: block;
+}
+
 
 /* 
 auto form style
@@ -113,6 +123,63 @@ form.auto div.flex-container span#ending-gear {
 }
 
 
+
+/*
+  search form style
+*/
+form.search div.wrapper{
+  display: flex;
+  position: relative;
+  margin: 8px 8px;
+}
+
+form.search div.wrapper span#search-logo{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 24px;
+  height: 100%;
+  background-image:  url("./assets/search-48px.svg");
+  background-size: 20px 20px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+form.search #search-query{
+  width: 100%;
+  padding: 0 24px;
+  line-height: 2;
+  font-size: 1.3rem;
+  font-family: sans-serif;
+  background: white;
+  border: thin solid #0c0c0d;
+  border-radius: 4px;
+  color: var(--main-text-color);
+}
+
+form.search #search-query:focus{
+  box-shadow: 0 0 4px #45a1ff;
+}
+
+form.search div.wrapper span#backspace{
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 24px;
+  height: 100%;
+  margin-right: 4px;
+  background-image:  url("./assets/backspace-sec-48px.svg");
+  background-size: 20px 20px;
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
+}
+form.search div.wrapper span#backspace:hover {
+  background-image: url("./assets/backspace-main-48px.svg")
+}
+
+
+
 /* narrow top margin of horizonal bar */
 hr {
   margin-top: 4px;
@@ -142,22 +209,29 @@ footer  div.flex-container{
 
 
 /* 
-found tabs style 
+found tabs & search tabs  lists style 
 */
 
-#found-tabs {
+div.list-tabs{
+  display: none;
+}
+div.list-tabs.active{
+  display: block;
+}
+
+div.list-tabs {
   margin: 0;
   margin-bottom: 4px;
   padding: 0;
   overflow: auto;
 }
-#found-tabs ol{
+div.list-tabs ol{
   margin: 0;
   padding: 0;
   overflow: visible;
   font-size: 1.3rem;
 }
-#found-tabs li {
+div.list-tabs li {
   margin: 0; 
   padding-left: 4px;
   padding-right: 4px;
@@ -167,31 +241,31 @@ found tabs style
   cursor: pointer;
   line-height: 2;
 }
-#found-tabs li.active{
+div.list-tabs li.active{
   background: var(--sec-hl-color);
   /* color:white; */
 }
-#found-tabs li:hover {
+div.list-tabs li:hover, div.list-tabs li:focus {
   background: var(--main-hl-color);
   color: white;
 }
 /* list counters */
-#found-tabs li span:nth-child(1){
+div.list-tabs li span:nth-child(1){
   display: inline-block;
   width: 1.65em;
   text-align: right;
 }
-#found-tabs.one-digit li span:nth-child(1){
+div.list-tabs.one-digit li span:nth-child(1){
   width: 0.85em;
 }
-#found-tabs.two-digits li span:nth-child(1){
+div.list-tabs.two-digits li span:nth-child(1){
   width: 1.65em;
 }
-#found-tabs.three-digits li span:nth-child(1){
+div.list-tabs.three-digits li span:nth-child(1){
   width: 2.45em;
 }
 /*favIcons*/
-#found-tabs li span:nth-child(2){
+div.list-tabs li span:nth-child(2){
   display: inline-block;
   vertical-align: bottom;
   height: 2em;
@@ -200,6 +274,36 @@ found tabs style
   background-size: 16px 16px;
   background-position: center;
   background-repeat: no-repeat;
+}
+
+/* 
+  helper blocks
+*/
+div.helper.active{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+div.helper{
+  display: none;
+  margin: 0 36px;
+  line-height: 1.3;
+  text-align: justify;
+}
+
+div.helper span{
+  display: block;
+  width: 80px;
+  height: 80px;
+  background-image: url("assets/error-48px.svg");
+  background-size: 80px 80px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+div.helper mark{
+  background: var(--grey-bg-color);
+  padding: 0 2px;
 }
 
 
@@ -276,10 +380,14 @@ div.keyword label input {
 }
 
 div.keyword #keyword-text{
-  width: 120px;
+  width: 100px;
+  padding: 0 4px;
+  line-height: 1.3;
+  font-size: 1.3rem;
+  font-family: sans-serif;
   background:white;
   border: thin solid #0c0c0d;
-  border-radius: 5%;
+  border-radius: 4px;
   color: var(--main-text-color);
 }
 
