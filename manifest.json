@@ -3,7 +3,7 @@
   "name": "tabFx",
   "version": "1.0",
 
-  "description": "Filter and access similar tabs in a fast way",
+  "description": "Search and auto filter similar tabs in a fast way",
   "homepage_url": "https://github.com/2alin/tabFx",
   "icons": {
     "48": "icons/icon-48px.svg"
