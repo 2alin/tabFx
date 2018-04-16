@@ -468,7 +468,6 @@ async function fillAutoResults(){
       e.stopPropagation(); 
       //removing tab
       let tabId = Number(e.target.id);
-      console.log("I'm deleting tab", tabId);
       browser.tabs.remove(tabId);
       //removing the list item in the list
       e.target.parentNode.remove();
@@ -702,7 +701,6 @@ async function searchByText() {
       e.stopPropagation(); 
       //removing tab
       let tabId = Number(e.target.id);
-      console.log("I'm deleting tab", tabId);
       browser.tabs.remove(tabId);
       //removing the list item in the list
       e.target.parentNode.remove();
@@ -744,7 +742,6 @@ async function searchByText() {
       browser.windows.update(windowId, {focused: true});
       browser.tabs.update(id, {active: true});
       window.close();
-      console.log("tab changed");
     }
 
     //adding attribute for arrow key focus

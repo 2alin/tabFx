@@ -31,7 +31,7 @@ body {
   font-size: 1.3rem;
 }
 main{
-  padding: 4px 4px;
+  padding: 4px 8px;
   /* 420 - 15(footer height) - 26(21.5+4 header) - 2*4 (top&bottom padding) */
   height: calc(405px - 26px - 8px);
   display: flex;
