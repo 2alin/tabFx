@@ -352,7 +352,7 @@ function updatePopup() {
     // fillAutoResults();
 
     //focus html for arrow keys to scroll list inmediately
-    document.querySelector('html').focus();
+    window.focus();
 
 
 
