@@ -446,6 +446,7 @@ async function fillAutoResults(){
     let itemCounter = document.createElement('span');
     let favIcon = document.createElement('span');
     let titleTab = document.createElement('span');
+    let closeTab = document.createElement('span');
     
     k++; // counter for list item
     itemCounter.textContent = k + '.'; // fill itemCounter
@@ -459,10 +460,25 @@ async function fillAutoResults(){
 
     titleTab.textContent = tab.title// fill tab title
     
+    //prepare class button and add event listener
+    closeTab.classList.add('close');
+    closeTab.id = tab.id; //keep track of the tab id 
+    closeTab.addEventListener('click', (e) =>{
+      // prevent propagating and  moving to another tab
+      e.stopPropagation(); 
+      //removing tab
+      let tabId = Number(e.target.id);
+      console.log("I'm deleting tab", tabId);
+      browser.tabs.remove(tabId);
+      //removing the list item in the list
+      e.target.parentNode.remove();
+    });
+
     // form list item
     tabItem.appendChild(itemCounter); 
     tabItem.appendChild(favIcon);
     tabItem.appendChild(titleTab);
+    tabItem.appendChild(closeTab);
 
 
     resultsList.appendChild(tabItem); //append to the list
@@ -664,6 +680,7 @@ async function searchByText() {
     let itemCounter = document.createElement('span');
     let favIcon = document.createElement('span');
     let titleTab = document.createElement('span');
+    let closeTab = document.createElement('span');
     
     k++; // counter for list item
     itemCounter.textContent = k + '.'; // fill itemCounter
@@ -677,10 +694,25 @@ async function searchByText() {
 
     titleTab.textContent = tab.title// fill tab title
     
+    //prepare class button and add event listener
+    closeTab.classList.add('close');
+    closeTab.id = tab.id; //keep track of the tab id 
+    closeTab.addEventListener('click', (e) =>{
+      // prevent propagating and  moving to another tab
+      e.stopPropagation(); 
+      //removing tab
+      let tabId = Number(e.target.id);
+      console.log("I'm deleting tab", tabId);
+      browser.tabs.remove(tabId);
+      //removing the list item in the list
+      e.target.parentNode.remove();
+    });
+
     // form list item
     tabItem.appendChild(itemCounter); 
     tabItem.appendChild(favIcon);
     tabItem.appendChild(titleTab);
+    tabItem.appendChild(closeTab);
 
 
     resultsList.appendChild(tabItem); //append to the list
@@ -712,6 +744,7 @@ async function searchByText() {
       browser.windows.update(windowId, {focused: true});
       browser.tabs.update(id, {active: true});
       window.close();
+      console.log("tab changed");
     }
 
     //adding attribute for arrow key focus

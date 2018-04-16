@@ -233,6 +233,7 @@ div.list-tabs ol{
 }
 div.list-tabs li {
   margin: 0; 
+  position: relative; /* for close buttons absolute position*/
   padding-left: 4px;
   padding-right: 4px;
   white-space: nowrap;
@@ -275,6 +276,30 @@ div.list-tabs li span:nth-child(2){
   background-position: center;
   background-repeat: no-repeat;
 }
+/*close buttons*/
+div.list-tabs li:focus span.close, div.list-tabs li:hover span.close{
+  display: inline-block;
+}
+div.list-tabs li span.close {
+  display:none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 50;
+  vertical-align: bottom;
+  height: 2em;
+  width: 2em;
+  background-color: var(--main-hl-color);
+  background-image:url("assets/close-sec-48px.svg");
+  background-size: 21px 21px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+div.list-tabs li span.close:hover{
+  background-image:url("assets/close-warn-48px.svg");
+}
+
+
 
 /* 
   helper blocks
