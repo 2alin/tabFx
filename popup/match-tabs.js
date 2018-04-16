@@ -506,6 +506,13 @@ async function fillAutoResults(){
         windowId = Number(e.target.parentNode.className);
         id = Number(e.target.parentNode.id);
       }
+
+      //handling same tab as active
+      if (id == thisTab.id){
+        window.close(); // already in the selected tab
+        return;
+      }
+
       browser.windows.update(windowId, {focused: true});
       browser.tabs.update(id, {active: true});
       window.close();
@@ -739,6 +746,13 @@ async function searchByText() {
         windowId = Number(e.target.parentNode.className);
         id = Number(e.target.parentNode.id);
       }
+
+      //handling same tab as active
+      if (id == thisTab.id){
+        window.close(); // already in the selected tab
+        return;
+      }
+      
       browser.windows.update(windowId, {focused: true});
       browser.tabs.update(id, {active: true});
       window.close();
