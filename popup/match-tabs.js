@@ -88,7 +88,7 @@ var autoBtn = document.querySelector('#auto-btn');
 var searchBtn = document.querySelector('#search-btn');
 var autoForm = document.querySelector('form.auto');
 var searchForm = document.querySelector('form.search');
-var foundTabs = document.querySelector('#found-tabs');
+var autoTabs = document.querySelector('#auto-tabs');
 var searchTabs = document.querySelector('#search-tabs');
 var autoHelper = document.querySelector("div.helper.auto")
 var searchHelper = document.querySelector("div.helper.search");
@@ -312,7 +312,7 @@ function updatePopup() {
 
     autoForm.classList.add('active');
     searchForm.classList.remove('active');
-    foundTabs.classList.add('active');
+    autoTabs.classList.add('active');
     searchTabs.classList.remove('active');
     //set active nav button when doc loads
     autoBtn.classList.add('active');
@@ -321,7 +321,7 @@ function updatePopup() {
     searchHelper.classList.remove('active');
 
     //handling exception active autohelper
-    if (foundTabs.classList.contains("empty")){
+    if (autoTabs.classList.contains("empty")){
       autoHelper.classList.add('active');
     }
     
@@ -366,7 +366,7 @@ function updatePopup() {
     searchForm.classList.add('active');
     autoForm.classList.remove('active');
     searchTabs.classList.add('active');
-    foundTabs.classList.remove('active');
+    autoTabs.classList.remove('active');
     //set active nav button when doc loads
     searchBtn.classList.add('active');
     autoBtn.classList.remove('active');
@@ -432,7 +432,7 @@ async function fillAutoResults(){
   //
   // For a reason, I got the items in 'ol' un-numbered, so 
   // I'm using 'k' as a counter
-  let resultsBox = document.querySelector("#found-tabs");
+  let resultsBox = document.querySelector("#auto-tabs");
   resultsBox.innerHTML = "";
 
   let resultsList = document.createElement("ol");
@@ -471,6 +471,8 @@ async function fillAutoResults(){
       browser.tabs.remove(tabId);
       //removing the list item in the list
       e.target.parentNode.remove();
+      //renumerating the list 
+      renumerate(autoTabs);
     });
 
     // form list item
@@ -711,8 +713,10 @@ async function searchByText() {
       browser.tabs.remove(tabId);
       //removing the list item in the list
       e.target.parentNode.remove();
+      //renumerating the list 
+      renumerate(searchTabs);
     });
-
+    
     // form list item
     tabItem.appendChild(itemCounter); 
     tabItem.appendChild(favIcon);
@@ -796,5 +800,19 @@ async function searchByText() {
 }
 
 
+/*
+function that will help renumerate tab lists without reloading 
+popup, ideal to avoid flickering screen
+*/
 
-
+function renumerate(listContainer){
+  let list = listContainer.firstChild;
+  //check if container child is a list
+  if (list.nodeName.toLowerCase() === 'ol'){
+    let k = 1;
+    for (let item of list.childNodes){
+      item.firstChild.textContent = k + '.';
+      k++;
+    }
+  }
+}
