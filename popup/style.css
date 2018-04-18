@@ -224,11 +224,12 @@ div.list-tabs {
   margin-bottom: 4px;
   padding: 0;
   overflow: auto;
+  will-change: transform;
 }
 div.list-tabs ol{
   margin: 0;
   padding: 0;
-  overflow: visible;
+  /* overflow: visible; */
   font-size: 1.3rem;
 }
 div.list-tabs li {
