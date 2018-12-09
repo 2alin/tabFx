@@ -453,10 +453,10 @@ async function fillAutoResults(){
 
     // fill favicon
     if(tab.favIconUrl){
-      if(tab.favIconUrl.startsWith("http")){
-        favIcon.style.backgroundImage = 'url(' + tab.favIconUrl +')';
-      }
+      favIcon.style.backgroundImage = 'url(' + tab.favIconUrl +')';
     }
+
+    console.log(tab);
 
     titleTab.textContent = tab.title// fill tab title
     
@@ -695,9 +695,7 @@ async function searchByText() {
 
     // fill favicon
     if(tab.favIconUrl){
-      if(tab.favIconUrl.startsWith("http")){
-        favIcon.style.backgroundImage = 'url(' + tab.favIconUrl +')';
-      }
+      favIcon.style.backgroundImage = 'url(' + tab.favIconUrl +')';
     }
 
     titleTab.textContent = tab.title// fill tab title
