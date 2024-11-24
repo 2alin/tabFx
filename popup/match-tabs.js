@@ -45,7 +45,7 @@ save and restore presets options from local storage
 var presets;
 
 function savePresets(){
-  browser.storage.local.set({
+  chrome.storage.local.set({
     presetsLocal: presets
   });
 }
@@ -71,7 +71,7 @@ function restorePresets() {
     console.log('Error: ' + error);
   }
 
-  var getting = browser.storage.local.get("presetsLocal");
+  var getting = chrome.storage.local.get("presetsLocal");
   getting.then(setPresets, onError);
 }
 
@@ -230,7 +230,7 @@ function endingURL(url){
 */
 
 async function updateAutoPreset(){
-  let thisTab = (await browser.tabs.query({active:true, currentWindow:true}))[0];
+  let thisTab = (await chrome.tabs.query({active:true, currentWindow:true}))[0];
 
   // retrieving auto start query
   if (thisTab.url.startsWith('http')) {
@@ -394,7 +394,7 @@ function updatePopup() {
 
 async function fillAutoResults(){
   
-  let foundTabs = await browser.tabs.query({});
+  let foundTabs = await chrome.tabs.query({});
   let tempoTabs;
   // first filter: 'leading' query
   tempoTabs = [];
@@ -437,7 +437,7 @@ async function fillAutoResults(){
 
   let resultsList = document.createElement("ol");
 
-  let thisTab = (await browser.tabs.query({active:true, currentWindow:true}))[0];
+  let thisTab = (await chrome.tabs.query({active:true, currentWindow:true}))[0];
   
   let k = 0; // counter for list item
 
@@ -468,7 +468,7 @@ async function fillAutoResults(){
       e.stopPropagation(); 
       //removing tab
       let tabId = Number(e.target.id);
-      browser.tabs.remove(tabId);
+      chrome.tabs.remove(tabId);
       //removing the list item in the list
       e.target.parentNode.remove();
       //renumerating the list 
@@ -515,8 +515,8 @@ async function fillAutoResults(){
         return;
       }
 
-      browser.windows.update(windowId, {focused: true});
-      browser.tabs.update(id, {active: true});
+      chrome.windows.update(windowId, {focused: true});
+      chrome.tabs.update(id, {active: true});
       window.close();
     }
 
@@ -565,7 +565,7 @@ async function fillAutoResults(){
   update popup content in case tab changes (using keyboard)
   when popup was opened
 */
-browser.tabs.onActivated.addListener(() => {
+chrome.tabs.onActivated.addListener(() => {
   updateAutoPreset();
   fillAutoResults();
 } );
@@ -626,7 +626,7 @@ search tabs by text algorithm
 
 async function searchByText() {
   let searchText = presets.search.query;
-  let allTabs = await browser.tabs.query({});
+  let allTabs = await chrome.tabs.query({});
   let resultTabs = []
 
   // take out trailing commas, to avoid  showing the whole
@@ -679,7 +679,7 @@ async function searchByText() {
   resultsBox.innerHTML = "";
   let resultsList = document.createElement("ol");
 
-  let thisTab = (await browser.tabs.query({active:true, currentWindow:true}))[0];
+  let thisTab = (await chrome.tabs.query({active:true, currentWindow:true}))[0];
   
   let k = 0; // counter for list item
 
@@ -708,7 +708,7 @@ async function searchByText() {
       e.stopPropagation(); 
       //removing tab
       let tabId = Number(e.target.id);
-      browser.tabs.remove(tabId);
+      chrome.tabs.remove(tabId);
       //removing the list item in the list
       e.target.parentNode.remove();
       //renumerating the list 
@@ -755,8 +755,8 @@ async function searchByText() {
         return;
       }
       
-      browser.windows.update(windowId, {focused: true});
-      browser.tabs.update(id, {active: true});
+      chrome.windows.update(windowId, {focused: true});
+      chrome.tabs.update(id, {active: true});
       window.close();
     }
 
